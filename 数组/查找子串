@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int mystring(char *str,char *substr)
+{
+	int num = 0;
+	while(*str!='\0')
+	{
+		if(*str!=*substr)
+		{
+			str++;
+			num++;
+			continue;
+		}
+		char *tmpstr = str;
+		char *tmpsubstr = substr;
+
+		while(*tmpsubstr!='\0')
+		{
+			if(*tmpsubstr !=*tmpstr)
+			{
+				str++;
+				break;
+			}
+			tmpstr++;
+			tmpsubstr++;
+		}
+
+		if(*tmpsubstr == '\0')
+		{
+			return num;
+		}
+	}
+	return -1;
+
+}
+
+int main()
+{
+	int a = mystring("abcdefg","efg");
+	if(a==-1)printf("cann't find!");
+	else printf("the location is %d",a);
+}
