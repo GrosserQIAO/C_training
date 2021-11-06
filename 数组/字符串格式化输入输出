@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void test1()
+{
+	char * str = "helloworld@itcast.cn";
+	char *buf1[1024] = {0};
+	char *buf2[1024] = {0};
+	sscanf(str,"%[^@]@%s",buf1,buf2);
+	printf("%s\n",buf1);
+	printf("%s\n",buf2);
+
+}
+
+void test2()
+{
+	char *str = "1123abcd$myname@000qwe";
+	char *buf[1024] = {0};
+	sscanf(str,"%*[^$]$%[^@]",buf);
+	printf("%s\n",buf);
+
+}
+
+//sprintf实现字符串拼接
+void test3()
+{
+	char *str1 = "hello";
+	char *str2 = "world";
+	char buf[1024] = {0};
+	sprintf(buf,"%s%s",str1,str2);
+	printf("%s",buf);
+}
+
+// sprintf实现数字与字符串转换
+void test4()
+{
+	int num = 111;
+	char *str = "@qiao.com";
+	char buf[1024] = {0};
+	sprintf(buf,"%d%s",num,str);
+	printf("%s",buf);
+}
+
+// sprintf设置左对齐、右对齐
+void test5()
+{
+	int num = 111;
+	char buf[1024] = {0};
+	sprintf(buf,"%8d",num);
+	printf("%s",buf);
+}
+
+int main()
+{
+	//test1();
+	//test2();
+	//test3();
+	//test4();
+	test5();
+	return 0;
+}
