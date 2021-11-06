@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// 字符串拷贝方法1,从数组角度来看
+void copy3(char *dstr,char *sstr)
+{
+	for(int i=0;sstr[i]!='\0';i++)
+	{
+		dstr[i]=sstr[i];
+	}
+}
+
+// 字符串拷贝方法2，从数组退化为指针角度来看
+void copy2(char *dstr , char *sstr)
+{
+	while(*sstr！='\0')
+	{
+		*dstr = *sstr;
+		dstr++;
+		sstr++;
+	}
+}
+
+// 字符串拷贝方法3，简化
+void copy3(char *dstr,char* sstr)
+{
+	whilre(*dstr++ = *sstr++){}
+}
+
+// 字符串翻转
+void reverse_string(char* str){
+
+	if (str == NULL){
+		return;
+	}
+
+	int begin = 0;
+	int end = strlen(str) - 1;
+	
+	while (begin < end){
+		
+		//交换两个字符元素方法有三种：
+
+		//1.创建中间变量，空间复杂
+		// char temp = str[begin];
+		// str[begin] = str[end];
+		// str[end] = temp;
+
+		// 2. 加减法,容易越界
+		// str[begin] = str[begin]+str[end];
+		// str[end] = str[begin]+str[end];
+		// str[begin] = str[begin]+str[end];
+
+		// 3. 与操作
+		str[begin] = str[begin]^str[end];
+		str[end] = str[begin]^str[end];
+		str[begin] = str[begin]^str[end];
+
+		begin++;
+		end--;
+	}
+
+}
+
+void test()
+{
+	char str[] = "abcdefghijklmn";
+	printf("str:%s\n", str);
+	reverse_string(str);
+	printf("str:%s\n", str);
+}
+
+
+int main()
+{
+	copy1;
+	return 0;
+}
