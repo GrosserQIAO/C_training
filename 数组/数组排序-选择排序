@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void select(int *p,int numsize)
+{
+	for(int i=0;i<numsize;i++)
+	{
+		int min = i;
+		for(int j=i+1;j<numsize;j++)
+		{
+			if(p[j]<p[min])
+			{
+				p[j]=p[j]^p[min];
+				p[min]=p[j]^p[min];
+				p[j]=p[j]^p[min];
+			}
+		}
+	}
+}
+
+int main()
+{
+	int arr[10]={55,67,23,23,232.54,90,432,423,23};
+	select(arr,10);
+	for(int i=0;i<10;i++)
+	{
+		printf("%d,",arr[i]);
+	}
+	return 0;
+}
