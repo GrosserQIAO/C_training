@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//按字符读写fgetc/fputc
+void test01()
+{
+	FILE *fp =  fopen("./test01.txt","w");
+	if(!fp)
+	{
+		perror("wrong!");
+		return;
+	}
+
+	char buf[1024]="nihaoqiao";
+	for(int i=0;i<strlen(buf);i++)
+	{
+		fputc(buf[i],fp);
+	}
+	fclose(fp);
+}
+void test02()
+{
+
+	FILE *fp1=fopen("./test01.txt","r");
+	if(!fp1)
+	{
+		perror("wrong!");
+		return;
+	}
+	char ch;
+	while((ch=fgetc(fp1))!=EOF)
+		{
+			printf("%c",ch);
+
+		}
+	fclose(fp1);
+}
+
+int main()
+{
+	test01();
+	test02();
+	return 0;
+}
