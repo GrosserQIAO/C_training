@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void func()
+{
+	printf("hello");
+}
+//1.通过函数类型创建函数指针
+void test01()
+{
+	typedef void(FUNC_TYPE)();
+
+	FUNC_TYPE * PFunc = func;
+	PFunc();
+}
+
+//2.先定义函数指针类型，再定义函数指针
+void test02()
+{
+	typedef void(*FUNC_TYPE)();
+	FUNC_TYPE PFunc = func;
+	PFunc();
+}
+
+//3.直接定义
+void test03()
+{
+	void (*PFunc)() = func;
+	PFunc();
+}
+
+int main()
+{
+	//test01();
+	//test02();
+	test03();
+	return 0;
+}
