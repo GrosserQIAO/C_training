@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct person
+{
+	char * name;
+	int age;
+};
+
+void printtext(void* a,void(*FUNC)(void *))
+{
+	FUNC(a);
+}
+void printint(void * a)
+{
+	int * num = (int*)a;
+	printf("%d\n",*num);
+}
+void printperson(void *a)
+{
+	struct person* p=(struct person*)a;
+	printf("%s,%d\n",p->name,p->age);
+}
+
+
+
+void test()
+{
+	int a=10;
+	printtext(&a,printint);
+	struct person p = {"qiao",10};
+	printtext(&p,printperson);
+}
+
+int main()
+{
+	test();
+	return 0;
+}
